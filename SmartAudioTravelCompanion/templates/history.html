@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History - Smart Audio Travel Companion</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Smart Audio Travel Companion</h1>
+    <nav class="nav">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/history">History</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h2 class="section-title">Listening History</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="history-table">
+
+        {% if history %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Story</th>
+                        <th>Category</th>
+                        <th>Listening Time</th>
+                        <th>Skips</th>
+                        <th>Replays</th>
+                        <th>Completed</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in history %}
+                        <tr>
+                            <td>{{ item.story.title }}</td>
+                            <td>{{ item.story.category }}</td>
+                            <td>{{ item.listening_time }} sec</td>
+                            <td>{{ item.skip_count }}</td>
+                            <td>{{ item.replay_count }}</td>
+                            <td>
+                                {% if item.completed == 1 %}
+                                    ✔ Yes
+                                {% else %}
+                                    ✘ No
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% else %}
+            <p class="empty-msg">No listening history available</p>
+        {% endif %}
+
+    </div>
+
+    <div class="action-box">
+        <form action="/clear_history" method="POST">
+            <button class="btn danger">Clear History</button>
+        </form>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <p>© 2026 Smart Audio Travel Companion</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Audio Travel Companion - Register</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Smart Audio Travel Companion</h1>
+</header>
+
+<div class="container">
+
+    <div class="form-box">
+        <h2>Create Account</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+
+            <label>Username</label>
+            <input type="text" name="username" required>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <label>Select Role</label>
+            <select name="role" class="select-box">
+                <option value="traveller">Traveller</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <button type="submit" class="btn">Register</button>
+
+        </form>
+
+        <p class="link-text">
+            Already have an account?
+            <a href="/login">Login here</a>
+        </p>
+
+    </div>
+
+</div>
+
+<footer class="footer">
+    <p>© 2026 Smart Audio Travel Companion</p>
+</footer>
+
+</body>
+</html>

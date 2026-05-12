@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Player - Smart Audio Travel Companion</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Smart Audio Travel Companion</h1>
+    <nav class="nav">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/history">History</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="player-box">
+
+        <h2>{{ story.title }}</h2>
+
+        <p><strong>Category:</strong> {{ story.category }}</p>
+        <p><strong>Duration:</strong> {{ story.duration }} sec</p>
+
+        <audio id="audioPlayer" controls>
+            <source src="/audio/{{ story.file_path.split('/')[-1] }}" type="audio/mpeg">
+        </audio>
+
+        <div class="controls">
+
+            <form action="/pause" method="POST" onsubmit="setPosition()">
+                <input type="hidden" name="position" id="pausePosition">
+                <button class="btn">Pause</button>
+            </form>
+
+            <form action="/resume" method="POST">
+                <button class="btn">Resume</button>
+            </form>
+
+            <form action="/skip" method="POST">
+                <button class="btn warning">Skip</button>
+            </form>
+
+            <form action="/replay" method="POST">
+                <button class="btn">Replay</button>
+            </form>
+
+            <form action="/complete" method="POST">
+                <button class="btn success">Complete</button>
+            </form>
+
+        </div>
+
+        <div class="back-link">
+            <a href="/dashboard">← Back to Dashboard</a>
+        </div>
+
+    </div>
+
+</div>
+
+<footer class="footer">
+    <p>© 2026 Smart Audio Travel Companion</p>
+</footer>
+
+<script>
+    function setPosition() {
+        var player = document.getElementById("audioPlayer");
+        document.getElementById("pausePosition").value = player.currentTime;
+    }
+</script>
+
+</body>
+</html>

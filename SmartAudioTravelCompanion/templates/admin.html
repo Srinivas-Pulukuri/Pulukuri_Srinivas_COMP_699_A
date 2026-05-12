@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - Smart Audio Travel Companion</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Admin Panel - Smart Audio Travel Companion</h1>
+    <nav class="nav">
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/health">System Health</a>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h2 class="section-title">Upload New Story</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="form-box">
+
+        <form action="/admin/upload" method="POST" enctype="multipart/form-data">
+
+            <label>Title</label>
+            <input type="text" name="title" required>
+
+            <label>Category</label>
+            <select name="category" class="select-box">
+                <option value="history">History</option>
+                <option value="nature">Nature</option>
+                <option value="culture">Culture</option>
+                <option value="legends">Legends</option>
+            </select>
+
+            <label>Duration (seconds)</label>
+            <input type="number" name="duration" required>
+
+            <label>Upload Audio File</label>
+            <input type="file" name="file" required>
+
+            <button class="btn success">Upload Story</button>
+
+        </form>
+
+    </div>
+
+    <h2 class="section-title">Manage Stories</h2>
+
+    <div class="table-box">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Duration</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for story in stories %}
+                <tr>
+
+                    <form action="/admin/update/{{ story.story_id }}" method="POST">
+                        <td>
+                            <input type="text" name="title" value="{{ story.title }}">
+                        </td>
+
+                        <td>
+                            <input type="text" name="category" value="{{ story.category }}">
+                        </td>
+
+                        <td>
+                            <input type="number" name="duration" value="{{ story.duration }}">
+                        </td>
+
+                        <td class="actions">
+
+                            <button class="btn">Update</button>
+                    </form>
+
+                    <form action="/admin/delete/{{ story.story_id }}" method="POST">
+                            <button class="btn danger">Delete</button>
+                    </form>
+
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    <h2 class="section-title">Usage Reports</h2>
+
+    <div class="table-box">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Story ID</th>
+                    <th>Play Count</th>
+                    <th>Engagement Rate</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for report in reports %}
+                <tr>
+                    <td>{{ report.story_id }}</td>
+                    <td>{{ report.play_count }}</td>
+                    <td>{{ report.engagement_rate }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    {% if system_status %}
+    <h2 class="section-title">System Status</h2>
+
+    <div class="status-box">
+        <p><strong>Status:</strong> {{ system_status.status }}</p>
+        <p><strong>Total Stories:</strong> {{ system_status.total_stories }}</p>
+        <p><strong>Total Reports:</strong> {{ system_status.total_reports }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+<footer class="footer">
+    <p>© 2026 Smart Audio Travel Companion</p>
+</footer>
+
+</body>
+</html>
