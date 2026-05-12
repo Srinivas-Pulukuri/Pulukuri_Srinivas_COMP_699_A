@@ -1,0 +1,272 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BODY */
+body {
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* HEADER */
+.header {
+    background-color: #1f2a44;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom: 10px;
+}
+
+/* NAVIGATION */
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #1f2a44;
+    color: white;
+    margin-top: 40px;
+}
+
+/* FORM BOX */
+.form-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-box label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.form-box input,
+.select-box {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* BUTTONS */
+.btn {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #2d89ef;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #1b5fad;
+}
+
+.btn.success {
+    background-color: #28a745;
+}
+
+.btn.success:hover {
+    background-color: #1e7e34;
+}
+
+.btn.danger {
+    background-color: #dc3545;
+}
+
+.btn.warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* ALERTS */
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.alert.success {
+    background-color: #d4edda;
+}
+
+.alert.danger {
+    background-color: #f8d7da;
+}
+
+.alert.warning {
+    background-color: #fff3cd;
+}
+
+.alert.info {
+    background-color: #d1ecf1;
+}
+
+/* LINKS */
+.link-text {
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* DASHBOARD GRID */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+/* SECTION TITLE */
+.section-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* PLAYER */
+.player-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+audio {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* CONTROLS */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.controls form {
+    flex: 1 1 120px;
+}
+
+/* TABLE */
+.table-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+table th {
+    background-color: #f1f1f1;
+}
+
+/* ACTIONS */
+.actions {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* HISTORY */
+.history-table {
+    margin-bottom: 20px;
+}
+
+.empty-msg {
+    text-align: center;
+    padding: 20px;
+}
+
+/* STATUS BOX */
+.status-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* ACTION BOX */
+.action-box {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* BACK LINK */
+.back-link {
+    margin-top: 15px;
+}
+
+.back-link a {
+    text-decoration: none;
+    color: #2d89ef;
+}
